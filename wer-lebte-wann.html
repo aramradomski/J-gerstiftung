@@ -1,0 +1,357 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Wer lebte wann? Familie Jaeger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,700,100,0;1,9..144,900,100,1&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --page:#e9e3d5; --paper:#f7f3e8; --ink:#1f1d1a; --ink2:#5b554a; --rule:#e2dac7;
+  --kunst:#8cc7ea; --handel:#f0c43f; --wissen:#95c75a; --bildung:#2f9aad; --none:#c9bddf;
+  --linie:#1f1d1a; --epoche:#bdb293; --krieg:#e0524a;
+  color-scheme: light;
+}
+html,body{background:var(--page);color:var(--ink)}
+body{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif;padding-inline:16px;padding-block:0 120px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  padding-block:10px;background:var(--page)}
+.bar b{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:900;font-size:20px;letter-spacing:.01em;margin-right:auto;
+  font-variation-settings:"SOFT" 100,"WONK" 1}
+.bar input{font:500 15px "Barlow Condensed",sans-serif;padding:7px 10px;border:1.5px solid var(--ink);border-radius:6px;background:var(--paper);color:var(--ink);width:200px;max-width:52vw}
+.bar button{font:600 14px "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:7px 11px;border:1.5px solid var(--ink);
+  background:var(--paper);color:var(--ink);border-radius:6px;cursor:pointer;min-width:38px}
+.bar button:hover{background:var(--ink);color:var(--paper)}
+.bar button:focus-visible,.bar input:focus-visible{outline:2px solid var(--krieg);outline-offset:2px}
+.bar button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+#wrap{overflow-x:auto;border-radius:18px;background:var(--paper);box-shadow:0 1px 0 #d8d0bd,0 10px 30px -18px rgba(60,45,20,.35)}
+#wrap svg{display:block}
+svg text{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif}
+.it{cursor:pointer}
+.it:hover .nm{fill:#b8382f}
+.it .hl{fill:none;stroke:transparent;stroke-width:2}
+.it.sel .hl{stroke:var(--krieg)}
+.it.rel .hl{stroke:var(--krieg);stroke-dasharray:3 3}
+.dim{opacity:.13}
+.lg{cursor:pointer}
+.lg:hover text{fill:#b8382f}
+.hint{font-size:14px;color:var(--ink2);margin:10px 4px 0;max-width:70ch}
+#card{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:9;
+  width:min(540px,calc(100vw - 32px));background:#fffdf7;border:1.5px solid var(--ink);border-radius:14px;
+  box-shadow:0 18px 40px -16px rgba(40,30,10,.45);padding:14px 16px 14px;max-height:52vh;overflow:auto}
+#card h3{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:22px;line-height:1.1;margin:0 30px 2px 0;text-wrap:balance}
+#card .d{font-weight:600;font-size:15px;letter-spacing:.05em;color:var(--ink2)}
+#card .chip{display:inline-block;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin:8px 6px 0 0;color:var(--ink)}
+#card p{font-family:Georgia,serif;font-size:14.5px;line-height:1.45;margin:8px 0 0;color:var(--ink)}
+#card .k{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-top:10px}
+#card a{color:var(--ink);text-decoration:underline;text-decoration-color:#b9ad8e;cursor:pointer}
+#card .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--ink);padding:4px 6px}
+@media (prefers-reduced-motion:no-preference){ .it.flash .hl{animation:fl 1.1s ease 2} @keyframes fl{50%{stroke:var(--krieg);stroke-width:5}} }
+</style>
+
+<div class="bar">
+  <b>Wer lebte wann?</b>
+  <input id="q" list="names" placeholder="Person suchen …" aria-label="Person suchen" autocomplete="off">
+  <datalist id="names"></datalist>
+  <button id="zo" aria-label="Verkleinern">−</button>
+  <button id="zf" aria-pressed="true">Poster</button>
+  <button id="zi" aria-label="Vergrößern">+</button>
+</div>
+<div id="wrap" role="img" aria-label="Zeitleiste der Lebensdaten der Familie Sternitzki, Stein und Jaeger von 1705 bis heute"></div>
+<p class="hint">Jeder Balken ist ein Leben. Tippen zeigt Details, Eltern und Kinder. Die Legende filtert nach Berufsfeld. Ausgeblendete Balkenenden bedeuten: Sterbejahr nicht überliefert. Quelle: Stammbaum der Familie Christoph Sternicke=Sternitzki (S. 227–238), Nachkommenschaftsblatt 1975 und Stiftungsunterlagen.</p>
+<div id="card" hidden></div>
+
+<script>
+const DATA = [{"id":0,"p":null,"n":"Christoph Sternicke","b":1705,"d":null,"ap":true,"df":"","pr":"Freigärtner, Schön-Ellguth (Schlesien)","note":"Freigärtner, Schön-Ellguth (Schlesien) · ⚭ Maria","dt":"um 1705","main":true,"band":0},{"id":1,"p":0,"n":"Johann Sternitzky","b":1739,"d":null,"ap":false,"df":"","pr":"Kgl. Schmelzer, Münze Breslau","note":"Kgl. Schmelzer, Münze Breslau · ⚭ Maria Elisabeth Methmer · 9 Kinder","dt":"*22.1.1739","main":true,"band":0},{"id":2,"p":1,"n":"Anna Maria Elisabeth Sternitzky","b":1779,"d":1785,"ap":false,"df":"","pr":"","note":"","dt":"*26.1.1779, †1785","main":false,"band":0},{"id":3,"p":1,"n":"Christian Leonhard Gottlob Sternitzky","b":1780,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*17.9.1780","main":false,"band":0},{"id":4,"p":1,"n":"Johann Heinrich Sternitzky","b":1782,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*20.11.1782","main":false,"band":0},{"id":5,"p":1,"n":"Andreas Benjamin Sternitzki","b":1784,"d":1851,"ap":false,"df":"","pr":"Drechsler, Wiesbaden","note":"⚭ Maria Sophie Henriette Amalie Dietz (1796–1866) · Drechsler, Wiesbaden · 5 Kinder","dt":"1784–1851","main":true,"band":0},{"id":6,"p":1,"n":"Susanne Catharina Sternitzky","b":1785,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*2.2.1785","main":false,"band":0},{"id":7,"p":1,"n":"Christian Sternitzky","b":1789,"d":null,"ap":false,"df":"","pr":"nach Nottaufe gestorben","note":"nach Nottaufe gestorben","dt":"*6.1.1789","main":false,"band":0},{"id":8,"p":1,"n":"Maria Elisabeth Sternitzky","b":1790,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*2.7.1790","main":false,"band":0},{"id":9,"p":1,"n":"Johanna Maria Elisabeth Sternitzky","b":1792,"d":1805,"ap":false,"df":"","pr":"","note":"","dt":"1792–1805","main":false,"band":0},{"id":10,"p":1,"n":"Wilhelm Sternitzky","b":1794,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*16.11.1794","main":false,"band":0},{"id":11,"p":5,"n":"Wilhelm (Karl) Sternitzki","b":1821,"d":1869,"ap":false,"df":"","pr":"Drechsler, Graveur, Photograph, Bad Ems","note":"Drechsler, Graveur, Photograph, Bad Ems · ⚭ Elisabeth Hofmann (†1878) · 3 Kinder","dt":"1821–1869","main":false,"band":1},{"id":12,"p":11,"n":"Adolf (Anton Benjamin) Sternitzki","b":1846,"d":1924,"ap":false,"df":"","pr":"Photograph, Wolfenbüttel (1871) & Braunschweig (1877)","note":"Photograph, Wolfenbüttel (1871) & Braunschweig (1877) · 1.⚭ Louise Karoline Rudolff (†1884) · 2.⚭ Christine Helene Bock (1861–1901) · 6 Kinder, 1–3 Wolfenbüttel, 4–6 Braunschweig","dt":"1846–1924","main":false,"band":1},{"id":13,"p":12,"n":"Wilhelm Sternitzki","b":1872,"d":1942,"ap":false,"df":"","pr":"","note":"⚭ Margarethe Reinicke (†1968), Gifhorn · 2 Kinder","dt":"1872–1942","main":false,"band":1},{"id":14,"p":13,"n":"Hildegard Sternitzki","b":1910,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Walter Rage (gef. Russland 1943) · 2 Kinder","dt":"*1910","main":false,"band":1},{"id":15,"p":14,"n":"Heidrun Rage","b":1941,"d":1955,"ap":false,"df":"","pr":"","note":"","dt":"1941–1955","main":false,"band":1},{"id":16,"p":14,"n":"Hans-Henning Rage","b":1944,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1944","main":false,"band":1},{"id":17,"p":13,"n":"Hans Adolf Sternitzki","b":1914,"d":1941,"ap":false,"df":"vermisst","pr":"vermißt Russland 1941","note":"vermißt Russland 1941","dt":"*1914","main":false,"band":1},{"id":18,"p":12,"n":"Elsbeth Sternitzki","b":1874,"d":1932,"ap":false,"df":"","pr":"gest. Frankfurt/Oder","note":"gest. Frankfurt/Oder","dt":"1874–1932","main":false,"band":1},{"id":19,"p":12,"n":"Margarethe Sternitzki","b":1875,"d":1962,"ap":false,"df":"","pr":"Braunschweig","note":"Braunschweig","dt":"1875–1962","main":false,"band":1},{"id":20,"p":12,"n":"Anna Sternitzki","b":1878,"d":1944,"ap":false,"df":"","pr":"gest. Königslutter","note":"gest. Königslutter","dt":"1878–1944","main":false,"band":1},{"id":21,"p":12,"n":"Adolf Sternitzki","b":1882,"d":1884,"ap":false,"df":"","pr":"","note":"","dt":"1882–1884","main":false,"band":1},{"id":22,"p":12,"n":"Adolfine (Fini) Sternitzki","b":1886,"d":null,"ap":false,"df":"","pr":"Lehrerin, Braunschweig","note":"Lehrerin, Braunschweig","dt":"*1886","main":false,"band":1},{"id":23,"p":11,"n":"Gustav (Heinrich Karl) Sternitzki","b":1847,"d":null,"ap":false,"df":"","pr":"Photograph in München(?)","note":"Photograph in München(?) · ⚭ Else … · 1 Kind","dt":"*1847","main":false,"band":1},{"id":24,"p":23,"n":"Emma Sternitzki","b":null,"d":null,"ap":false,"df":"","pr":"","note":"⚭ … Unkauf · 2 Kinder","dt":"","main":false,"band":1},{"id":25,"p":24,"n":"Sohn Unkauf","b":null,"d":null,"ap":false,"df":"","pr":"starb als Student","note":"starb als Student","dt":"","main":false,"band":1},{"id":26,"p":24,"n":"Ella Unkauf","b":null,"d":null,"ap":false,"df":"","pr":"Lehrerin","note":"Lehrerin","dt":"","main":false,"band":1},{"id":27,"p":11,"n":"Karl (Franz) Sternitzki","b":1849,"d":1902,"ap":false,"df":"","pr":"Konditor, Photograph — übernahm 1877 das Photogeschäft Wolfenbüttel vom Bruder","note":"Konditor, Photograph — übernahm 1877 das Photogeschäft Wolfenbüttel vom Bruder · ⚭ Marie Massin (1857–1925) · 4 Kinder, Wolfenbüttel","dt":"1849–1902","main":false,"band":1},{"id":28,"p":27,"n":"Arthur Sternitzki","b":1884,"d":1940,"ap":false,"df":"","pr":"Kaufmann, ledig","note":"Kaufmann, ledig","dt":"1884–1940","main":false,"band":1},{"id":29,"p":27,"n":"Robert Sternitzki","b":1886,"d":1956,"ap":false,"df":"","pr":"Kaufmann, ledig","note":"Kaufmann, ledig","dt":"1886–1956","main":false,"band":1},{"id":30,"p":27,"n":"Paul Sternitzki","b":1887,"d":1915,"ap":false,"df":"","pr":"gef. Rußland, cand.math.","note":"gef. Rußland, cand.math.","dt":"1887–1915","main":false,"band":1},{"id":31,"p":27,"n":"Karl Sternitzki","b":1892,"d":1938,"ap":false,"df":"","pr":"Kunstmaler, ledig","note":"Kunstmaler, ledig","dt":"1892–1938","main":false,"band":1},{"id":32,"p":5,"n":"Heinrich (Johann) Sternitzki","b":1824,"d":1893,"ap":false,"df":"","pr":"Tapezierer, Möbelhändler Wiesbaden, Geschworener","note":"Tapezierer, Möbelhändler Wiesbaden, Geschworener · ⚭ Anna Maria Auguste French (†1871) · 4 Kinder, in Wiesbaden (nur 3 im Quellbuch namentlich geführt)","dt":"1824–1893","main":false,"band":2},{"id":33,"p":32,"n":"Louise (Sophie) Sternitzki","b":1857,"d":1930,"ap":false,"df":"","pr":"","note":"⚭ Friedrich Hirsch (1851–1940) · 6 Kinder, Wi-Bierstadt","dt":"1857–1930","main":false,"band":2},{"id":34,"p":33,"n":"Minna Hirsch","b":1878,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Wilhelm Vonhausen · keine Kinder","dt":"*1878","main":false,"band":2},{"id":35,"p":33,"n":"Karl Hirsch","b":1881,"d":null,"ap":false,"df":"","pr":"Landwirt, Niederhausen","note":"Landwirt, Niederhausen · ⚭ Johanna Müller · 4 Kinder","dt":"*1881","main":false,"band":2},{"id":36,"p":35,"n":"Walter Hirsch","b":1907,"d":null,"ap":false,"df":"","pr":"Diplomgärtner","note":"Diplomgärtner · ⚭ Irmgard Roediger (1.Ehe) · 2.⚭ Günter Bertling","dt":"*1907","main":false,"band":2},{"id":37,"p":36,"n":"Waltraud Hirsch","b":1940,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1940","main":false,"band":2},{"id":38,"p":36,"n":"Wolf-Dieter Hirsch","b":1942,"d":null,"ap":false,"df":"","pr":"Dipl.-Ing.","note":"","dt":"*1942, Dipl.-Ing.","main":false,"band":2},{"id":39,"p":36,"n":"Monika Hirsch","b":1943,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1943","main":false,"band":2},{"id":40,"p":35,"n":"Werner Hirsch","b":1908,"d":null,"ap":false,"df":"","pr":"staatl. gepr. Landwirt","note":"staatl. gepr. Landwirt · ⚭ Margret Wefelscheid, Niederhausen","dt":"*1908","main":false,"band":2},{"id":41,"p":40,"n":"Hiltrud Hirsch","b":1940,"d":null,"ap":false,"df":"","pr":"Kindergärtnerin","note":"Kindergärtnerin · ⚭ Horst Brandel","dt":"*1940","main":false,"band":2},{"id":42,"p":41,"n":"Sebastian Brandel","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":43,"p":41,"n":"Tobias Brandel","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":44,"p":40,"n":"Ulrike Hirsch","b":1942,"d":null,"ap":false,"df":"","pr":"Lehrerin","note":"Lehrerin · ⚭ Hartmut Amberger","dt":"*1942","main":false,"band":2},{"id":45,"p":44,"n":"Stephanie Amberger","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":46,"p":40,"n":"Hans Peter Hirsch","b":1943,"d":null,"ap":false,"df":"","pr":"Landwirt","note":"Landwirt · ⚭ Renate Döring","dt":"*1943","main":false,"band":2},{"id":47,"p":46,"n":"Lukas Hirsch","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":48,"p":35,"n":"Ilse Hirsch","b":1910,"d":null,"ap":false,"df":"","pr":"Apothekerin","note":"Apothekerin · ⚭ Joseph Schmitt · keine Kinder","dt":"*1910","main":false,"band":2},{"id":49,"p":35,"n":"Lore Hirsch","b":1921,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Reinhold Bosies, Oberamtsrat","dt":"*1921","main":false,"band":2},{"id":50,"p":33,"n":"Julie Hirsch","b":1882,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Wilhelm Trull, Kaufmann Berlin","dt":"*1882","main":false,"band":2},{"id":51,"p":50,"n":"Johanna-Hanni Trull","b":1912,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Georg Müller","dt":"*1912","main":false,"band":2},{"id":52,"p":51,"n":"Horst Müller","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":53,"p":50,"n":"Charlotte (Lotti) Trull","b":1913,"d":null,"ap":false,"df":"","pr":"Kindergärtnerin","note":"Kindergärtnerin · ⚭ Folkert Müller, Pfarrer","dt":"*1913","main":false,"band":2},{"id":54,"p":33,"n":"Elisabeth Hirsch","b":1884,"d":null,"ap":false,"df":"","pr":"Kfm. Angestellte","note":"Kfm. Angestellte · ⚭ Karl Stock, Kaufmann","dt":"*1884","main":false,"band":2},{"id":55,"p":54,"n":"Anneliese Stock","b":1920,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Herbert Seidel","dt":"*1920","main":false,"band":2},{"id":56,"p":55,"n":"Monika Seidel","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":57,"p":33,"n":"Wilhelm Hirsch","b":1887,"d":null,"ap":false,"df":"","pr":"Gartenarchitekt, Aukam","note":"Gartenarchitekt, Aukam · ⚭ Anna Hahn","dt":"*1887","main":false,"band":2},{"id":58,"p":57,"n":"Marianne Hirsch","b":1918,"d":null,"ap":false,"df":"","pr":"Schneidermeisterin","note":"","dt":"*1918, Schneidermeisterin","main":false,"band":2},{"id":59,"p":33,"n":"Gustav Hirsch","b":1899,"d":null,"ap":false,"df":"","pr":"Oberbaurat Freiburg","note":"Oberbaurat Freiburg · ⚭ Eva Blaschke · keine Kinder","dt":"*1899","main":false,"band":2},{"id":60,"p":32,"n":"Julie Sternitzki","b":1860,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Eduard Simon, Obergärtner","dt":"*1860","main":false,"band":2},{"id":61,"p":60,"n":"Willi Simon","b":1884,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Frieda Rus, Pforzheim","dt":"*1884","main":false,"band":2},{"id":62,"p":61,"n":"Anna Simon","b":1912,"d":1945,"ap":false,"df":"gefallen","pr":"","note":"","dt":"*1912, gef. München 1945","main":false,"band":2},{"id":63,"p":61,"n":"Mathilde Simon","b":1915,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Gerhard Fischer, Reichsbankinspektor · keine Kinder","dt":"*1915","main":false,"band":2},{"id":64,"p":61,"n":"Heinz Simon","b":1918,"d":null,"ap":false,"df":"","pr":"Oberlehrer","note":"⚭ Cläre Hammer · keine Kinder","dt":"*1918, Oberlehrer","main":false,"band":2},{"id":65,"p":32,"n":"Wilhelm (Friedrich Adolf) Sternitzki","b":1863,"d":null,"ap":false,"df":"","pr":"Möbelhändler","note":"Möbelhändler · 1.⚭ Wilhelmine Gaab · 2.⚭ Auguste Müller","dt":"*1863","main":false,"band":2},{"id":66,"p":65,"n":"Wilhelmine Sternitzki","b":1888,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1888","main":false,"band":2},{"id":67,"p":65,"n":"Luise Christiane Antonie Sternitzki","b":1895,"d":null,"ap":false,"df":"","pr":"","note":"1.⚭ Karl Lendle, Bankbeamter · 2.⚭ Karl Schneider","dt":"*1895","main":false,"band":2},{"id":68,"p":67,"n":"Ilse Lendle","b":1919,"d":null,"ap":false,"df":"","pr":"Malerin","note":"⚭ Kurt Pedell · keine Kinder","dt":"*1919, Malerin","main":false,"band":2},{"id":69,"p":67,"n":"Gisela Lendle","b":1922,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Günther Schmidt, Kaufmann","dt":"*1922","main":false,"band":2},{"id":70,"p":69,"n":"Ingrid Schmidt","b":1944,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Donald Sinclair Day","dt":"*1944","main":false,"band":2},{"id":71,"p":70,"n":"Andrew Jan Day","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":2},{"id":72,"p":69,"n":"Wolfgang Schmidt","b":1947,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1947","main":false,"band":2},{"id":73,"p":69,"n":"Peter Schmidt","b":1949,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1949","main":false,"band":2},{"id":74,"p":65,"n":"Heinrich Christian Ernst Sternitzki","b":1896,"d":null,"ap":false,"df":"","pr":"Kaufmann","note":"Kaufmann · ⚭ Paula Springer · keine Kinder","dt":"*1896","main":false,"band":2},{"id":75,"p":5,"n":"Amalie (Elisabeth) Sternitzki","b":1828,"d":1864,"ap":false,"df":"","pr":"","note":"⚭ Joseph Port (1827–1904), Kreissekretär a.D., Kanzleirat · 5 Kinder","dt":"1828–1864","main":false,"band":3},{"id":76,"p":75,"n":"Adolph (Georg) Port","b":1854,"d":null,"ap":false,"df":"","pr":"Kaufmann in Moskau","note":"Kaufmann in Moskau · ⚭ Fanni Doll","dt":"*1854","main":false,"band":3},{"id":77,"p":76,"n":"Gertrud Port","b":1898,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1898","main":false,"band":3},{"id":78,"p":76,"n":"Adolf (Ado) Port","b":1900,"d":null,"ap":false,"df":"","pr":"Ingenieur, Swerdlowsk","note":"Ingenieur, Swerdlowsk · ⚭ Katharina Waganowa","dt":"*1900","main":false,"band":3},{"id":79,"p":78,"n":"Katharina Port","b":1938,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1938","main":false,"band":3},{"id":80,"p":76,"n":"Ernst Port","b":1901,"d":1943,"ap":false,"df":"","pr":"Kasachstan (Dienstpflichtiger)","note":"","dt":"*1901, †1943 Kasachstan (Dienstpflichtiger)","main":false,"band":3},{"id":81,"p":75,"n":"Moritz Port","b":1855,"d":1892,"ap":false,"df":"","pr":"Bankbeamter","note":"","dt":"1855–1892, Bankbeamter","main":false,"band":3},{"id":82,"p":75,"n":"Josephine Port","b":1860,"d":1939,"ap":false,"df":"","pr":"Kassierer, Höchst/Main","note":"1.⚭ August Herber (†1901) · Kassierer, Höchst/Main","dt":"1860–1939","main":false,"band":3},{"id":83,"p":82,"n":"Emmi Scheuermann","b":1881,"d":null,"ap":false,"df":"","pr":"","note":"⚭ August Gundlach, Kaufmann Bingen","dt":"*1881","main":false,"band":3},{"id":84,"p":83,"n":"Herbert Gundlach","b":1922,"d":null,"ap":true,"df":"","pr":"","note":"","dt":"*um 1922","main":false,"band":3},{"id":85,"p":82,"n":"Luise Scheuermann","b":1883,"d":1942,"ap":false,"df":"","pr":"","note":"1.⚭ Gottfried Cade · 2.⚭ Dr. Eugen Jagsch, Zahnarzt Wiesbaden","dt":"1883–1942","main":false,"band":3},{"id":86,"p":85,"n":"Hermann Cade","b":1908,"d":null,"ap":false,"df":"","pr":"Bauingenieur","note":"Bauingenieur · ⚭ Margarethe Saar","dt":"*1908","main":false,"band":3},{"id":87,"p":86,"n":"Peter Cade","b":1939,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1939","main":false,"band":3},{"id":88,"p":85,"n":"Werner Jagsch","b":1914,"d":1963,"ap":false,"df":"","pr":"Dr.med.dent., Wiesbaden","note":"Dr.med.dent., Wiesbaden · 1.⚭ Diez (3 Söhne, Alfred Fuhrig) · 2.⚭ Wilhelma Thielemann","dt":"1914–1963","main":false,"band":3},{"id":89,"p":85,"n":"Ruth Jagsch","b":1916,"d":1955,"ap":false,"df":"","pr":"","note":"⚭ Werner Teschner · 2.⚭ Emmi Auler","dt":"1916–1955","main":false,"band":3},{"id":90,"p":89,"n":"Rainer Teschner","b":1958,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1958","main":false,"band":3},{"id":91,"p":89,"n":"Helga Teschner","b":1943,"d":null,"ap":false,"df":"","pr":"Sekretärin","note":"⚭ Vincenzo Casaccia, Bundesbahnangestellter","dt":"*1943, Sekretärin","main":false,"band":3},{"id":92,"p":91,"n":"Marco Casaccia","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":93,"p":91,"n":"Alexandra Casaccia","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":94,"p":91,"n":"Marcella Casaccia","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":95,"p":89,"n":"Christel Teschner","b":1946,"d":null,"ap":false,"df":"","pr":"Sekretärin","note":"⚭ Werner Bücher, Polier","dt":"*1946, Sekretärin","main":false,"band":3},{"id":96,"p":95,"n":"Thomas Bücher","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":97,"p":89,"n":"Ellen Teschner","b":1948,"d":null,"ap":false,"df":"","pr":"kfm. Angestellte","note":"⚭ Arno Braun, Buchhalter","dt":"*1948, kfm. Angestellte","main":false,"band":3},{"id":98,"p":97,"n":"Sabine Braun","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":99,"p":75,"n":"Heinrich (Wilhelm) Port","b":1862,"d":1947,"ap":false,"df":"","pr":"Apotheker, Generalagent","note":"⚭ Maria Ruhl (†1936) · 3 Kinder","dt":"1862–1947, Apotheker, Generalagent","main":false,"band":3},{"id":100,"p":99,"n":"Hermann Port","b":1898,"d":null,"ap":false,"df":"","pr":"Dr.rer.pol., Dozent Königsberg","note":"⚭ Brigitte Fieberg · 5 Kinder","dt":"*1898, Dr.rer.pol., Dozent Königsberg","main":false,"band":3},{"id":101,"p":100,"n":"Gisela Port","b":1929,"d":null,"ap":false,"df":"","pr":"Dipl.-Kauffrau","note":"⚭ Hans Hüning, Dr.rer.pol., Direktor Düsseldorf","dt":"*1929, Dipl.-Kauffrau","main":false,"band":3},{"id":102,"p":101,"n":"Eckehard Hüning","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":103,"p":101,"n":"Ulrich Hüning","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":104,"p":100,"n":"Johannes Port","b":1932,"d":null,"ap":false,"df":"","pr":"Jurist, Reg.-Dir.","note":"⚭ Eva Schnell, Lehrerin Köln","dt":"*1932, Jurist, Reg.-Dir.","main":false,"band":3},{"id":105,"p":104,"n":"Michael Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":106,"p":104,"n":"Ursula Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":107,"p":104,"n":"Andreas Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":108,"p":100,"n":"Regine Port","b":1937,"d":null,"ap":false,"df":"","pr":"Apothekerin","note":"⚭ Bruno Claßen, Jurist, Oberpostrat Siegen","dt":"*1937, Apothekerin","main":false,"band":3},{"id":109,"p":108,"n":"Hildegard Claßen","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":110,"p":108,"n":"Peter Claßen","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":111,"p":100,"n":"Rüdiger Port","b":1944,"d":null,"ap":false,"df":"","pr":"Arzt","note":"","dt":"*1944, Arzt","main":false,"band":3},{"id":112,"p":100,"n":"Eberhard Port","b":1944,"d":null,"ap":false,"df":"","pr":"cand.arch.","note":"","dt":"*1944, cand.arch.","main":false,"band":3},{"id":113,"p":99,"n":"Hans Port","b":1900,"d":null,"ap":false,"df":"","pr":"Dipl.-Landwirt, Oberlandwirtschaftsrat","note":"⚭ Hildegard-Agnes Sante, Lehrerin · keine Kinder","dt":"*1900, Dipl.-Landwirt, Oberlandwirtschaftsrat","main":false,"band":3},{"id":114,"p":99,"n":"Käte Port","b":1904,"d":null,"ap":false,"df":"","pr":"Gymnastiklehrerin","note":"","dt":"*1904, Gymnastiklehrerin","main":false,"band":3},{"id":115,"p":75,"n":"Hermann (Gustav Nikolaus) Port","b":1864,"d":1929,"ap":false,"df":"","pr":"Gymnasialprofessor Fulda","note":"⚭ Karoline verw. Haas · 4 Kinder","dt":"1864–1929, Gymnasialprofessor Fulda","main":false,"band":3},{"id":116,"p":115,"n":"Walter Port","b":1894,"d":1918,"ap":false,"df":"gefallen","pr":"stud.phil.","note":"","dt":"*1894, gef. Merville 1918, stud.phil.","main":false,"band":3},{"id":117,"p":115,"n":"Helene Port","b":1896,"d":1943,"ap":false,"df":"","pr":"","note":"⚭ Hugo Hartmann, Bankbeamter Fulda","dt":"*1896, †1943","main":false,"band":3},{"id":118,"p":117,"n":"Hans-Joachim Hartmann","b":1924,"d":null,"ap":false,"df":"","pr":"Meister der Funktechnik","note":"Meister der Funktechnik · ⚭ Doris verw. Kattner · keine Kinder","dt":"*1924","main":false,"band":3},{"id":119,"p":117,"n":"Marianne Hartmann","b":1929,"d":null,"ap":false,"df":"","pr":"Grafikdesignerin","note":"⚭ Bernhard Johannes, Grafikdesigner","dt":"*1929, Grafikdesignerin","main":false,"band":3},{"id":120,"p":119,"n":"Iris Johannes","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":121,"p":115,"n":"Heinrich (Heinz) Port","b":1898,"d":null,"ap":false,"df":"","pr":"Dr.med.dent. Bad Orb","note":"1.⚭ Auguste Maria Schwarz · 2.⚭ Henriette (Henny) Grau · 3 Kinder","dt":"*1898, Dr.med.dent. Bad Orb","main":false,"band":3},{"id":122,"p":121,"n":"Walter Oskar Port","b":1926,"d":null,"ap":false,"df":"","pr":"Dr.med.dent.","note":"⚭ Margaretha Uhl","dt":"*1926, Dr.med.dent.","main":false,"band":3},{"id":123,"p":122,"n":"Christine Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":124,"p":121,"n":"Marlene Port","b":1928,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Paul Köhli, Ingenieur Bern","dt":"*1928","main":false,"band":3},{"id":125,"p":124,"n":"Brigitte Köhli","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":126,"p":124,"n":"Kathrin Köhli","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":127,"p":124,"n":"Markus Köhli","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":128,"p":121,"n":"Ernst Vollrad Port","b":1937,"d":null,"ap":false,"df":"","pr":"Kaufmann Bad Orb","note":"1.⚭ Johanna Gruber · 2.⚭ Barbara Johannes/Langenselbold","dt":"*1937, Kaufmann Bad Orb","main":false,"band":3},{"id":129,"p":128,"n":"Ivonne Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":130,"p":128,"n":"Oliver Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":131,"p":128,"n":"Sven Port","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":3},{"id":132,"p":115,"n":"Josephine (Fifi) Port","b":1901,"d":1941,"ap":false,"df":"","pr":"","note":"","dt":"1901–1941","main":false,"band":3},{"id":133,"p":5,"n":"Sophie (Elisabeth) Sternitzki","b":1833,"d":1915,"ap":false,"df":"","pr":"","note":"⚭ Adolf Stein (1827–1899), Buchdrucker Frankfurt/M · 8 Kinder","dt":"1833–1915","main":true,"band":4},{"id":134,"p":133,"n":"Adolfine Stein","b":1854,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Reinhold Schraps, Rechtsanwalt","dt":"*1854","main":false,"band":4},{"id":135,"p":134,"n":"Siegfried Schraps","b":1875,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Maria Friederike Mätzke","dt":"*1875","main":false,"band":4},{"id":136,"p":135,"n":"Isolde Schraps","b":1907,"d":1944,"ap":false,"df":"?","pr":"","note":"","dt":"*1907, †1944?","main":false,"band":4},{"id":137,"p":133,"n":"Elisabeth (Helene Johanna) Stein","b":1856,"d":1915,"ap":false,"df":"","pr":"Journalist","note":"","dt":"*1856, †um 1915, Journalist","main":false,"band":4},{"id":138,"p":133,"n":"Adolf (Wilhelm) Stein","b":1856,"d":null,"ap":false,"df":"","pr":"Dr.jur., Rechtsanwalt Frankfurt","note":"Dr.jur., Rechtsanwalt Frankfurt · ⚭ Luise Schwab","dt":"*1856","main":false,"band":4},{"id":139,"p":138,"n":"Herbert Stein","b":1888,"d":null,"ap":false,"df":"","pr":"Dr.jur., Rechtsanwalt","note":"⚭ Erna Witt · keine Kinder","dt":"*1888, Dr.jur., Rechtsanwalt","main":false,"band":4},{"id":140,"p":138,"n":"Maria Erna Stein","b":1891,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Helmut Kircher, Fabrikant","dt":"*1891","main":false,"band":4},{"id":141,"p":140,"n":"Maria Luise Kircher","b":1921,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1921","main":false,"band":4},{"id":142,"p":133,"n":"Gustav (Friedrich Karl) Stein","b":1860,"d":1945,"ap":false,"df":"","pr":"Dr.phil., Syndikus","note":"⚭ Helene Kattwinkel","dt":"1860–1945, Dr.phil., Syndikus","main":false,"band":4},{"id":143,"p":142,"n":"Friedrich (Karl Georg) Stein","b":1901,"d":null,"ap":false,"df":"","pr":"Kaufmann Duisburg","note":"⚭ Elfriede Laupenmühlen","dt":"*1901, Kaufmann Duisburg","main":false,"band":4},{"id":144,"p":143,"n":"Barbara Stein","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":145,"p":142,"n":"Gustav (Eugen) Stein","b":1903,"d":1975,"ap":false,"df":"","pr":"Rechtsanwalt, Professor","note":"⚭ Ruth Immelen","dt":"1903–1975, Rechtsanwalt, Professor","main":false,"band":4},{"id":146,"p":145,"n":"Nanni Stein","b":1946,"d":null,"ap":true,"df":"","pr":"(adoptiert)","note":"⚭ Kaj Burchardi","dt":"*um 1946 (adoptiert)","main":false,"band":4},{"id":147,"p":146,"n":"Astrid Burchardi","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":148,"p":146,"n":"Julie Burchardi","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":149,"p":133,"n":"Hedwig (Amalie) Stein","b":1862,"d":1931,"ap":false,"df":"","pr":"","note":"⚭ Max Goldschmidt (1847–1885), Kaufmann Frankfurt","dt":"1862–1931","main":false,"band":4},{"id":150,"p":149,"n":"Heinz (Gustav) Goldschmidt","b":1888,"d":1958,"ap":false,"df":"","pr":"Jurist, Min.-Rat Bonn","note":"⚭ Gertrud Leymann","dt":"1888–1958, Jurist, Min.-Rat Bonn","main":false,"band":4},{"id":151,"p":150,"n":"Inge Goldschmidt","b":1919,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Herbert Knolle, Dr.rer.pol., Min.-Direktor","dt":"*1919","main":false,"band":4},{"id":152,"p":151,"n":"Marga Knolle","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":153,"p":151,"n":"Klaus Knolle","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":154,"p":150,"n":"Rolf Goldschmidt","b":1922,"d":null,"ap":false,"df":"","pr":"Dr.rer.pol., Min.-Rat Stuttgart","note":"⚭ Brigitte Bauer","dt":"*1922, Dr.rer.pol., Min.-Rat Stuttgart","main":false,"band":4},{"id":155,"p":149,"n":"Adolf (Wilhelm) Goldschmidt","b":1890,"d":null,"ap":false,"df":"","pr":"Kaufmann Frankfurt","note":"⚭ Susi Schwarz","dt":"*1890, Kaufmann Frankfurt","main":false,"band":4},{"id":156,"p":155,"n":"Werner Goldschmidt","b":1924,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Ruth Mayerhofer, New York","dt":"*1924","main":false,"band":4},{"id":157,"p":156,"n":"Stephan Goldschmidt","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":158,"p":156,"n":"Barbara Goldschmidt","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":159,"p":149,"n":"Friedrich Goldschmidt","b":1897,"d":1917,"ap":false,"df":"gefallen","pr":"","note":"","dt":"*1897, gef. Frankreich 1917","main":false,"band":4},{"id":160,"p":133,"n":"Amalie (Amelie/Luise) Stein","b":1872,"d":null,"ap":false,"df":"","pr":"Oberinspektorin","note":"","dt":"*1872, Oberinspektorin","main":false,"band":4},{"id":161,"p":133,"n":"Sophie (Henriette) Stein","b":1872,"d":null,"ap":false,"df":"","pr":"Fotografin","note":"⚭ Paul Schäfer, Fotograf Elberfeld","dt":"*1872, Fotografin","main":false,"band":4},{"id":162,"p":161,"n":"Lilli Schäfer","b":1896,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Wilhelm Röth, Rektor Elberfeld","dt":"*1896","main":false,"band":4},{"id":163,"p":162,"n":"Hans Herbert Röth","b":1923,"d":null,"ap":false,"df":"","pr":"Oberstudienrat","note":"⚭ Marga Langen, Dortmund","dt":"*1923, Oberstudienrat","main":false,"band":4},{"id":164,"p":163,"n":"Hans Werner Röth","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":165,"p":163,"n":"Wilfried Röth","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":166,"p":162,"n":"Horst Röth","b":1926,"d":null,"ap":false,"df":"","pr":"Dipl.-Ing., Professor","note":"⚭ Gertrud Langen (Schwester der Vorerwähnten)","dt":"*1926, Dipl.-Ing., Professor","main":false,"band":4},{"id":167,"p":166,"n":"Claus Dieter Röth","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":168,"p":166,"n":"Bärbel Röth","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":169,"p":166,"n":"Gitta Röth","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":170,"p":166,"n":"Harald Röth","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":171,"p":161,"n":"Anna Schäfer","b":1901,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Hans Butterweck, Gewerbeschuldirektor Gevelsberg","dt":"*1901","main":false,"band":4},{"id":172,"p":171,"n":"Hans Jürgen Butterweck","b":1932,"d":null,"ap":false,"df":"","pr":"Dr.-Ing., Professor","note":"⚭ Hanne Bachmann","dt":"*1932, Dr.-Ing., Professor","main":false,"band":4},{"id":173,"p":172,"n":"Ute Butterweck","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":174,"p":172,"n":"Christoff Butterweck","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":175,"p":171,"n":"Edelgard Butterweck","b":1935,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1935","main":false,"band":4},{"id":176,"p":133,"n":"Philipp (Arthur) Stein","b":1870,"d":1932,"ap":false,"df":"","pr":"Dr. phil., Professor, Publizist","note":"⚭ Emma Jüngst (1877–1963) · 4 Kinder, Frankfurt/M","dt":"1870–1932, Dr.phil., Professor","main":true,"band":4},{"id":177,"p":176,"n":"Hilde Stein","b":1902,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Rolf Kadach · kinderlos","dt":"*1902","main":false,"band":4},{"id":178,"p":176,"n":"Wilfried (Benno Heinz) Stein","b":1906,"d":null,"ap":false,"df":"","pr":"Dipl.-Ing., Direktor Köln","note":"⚭ Edith Graff","dt":"*1906, Dipl.-Ing., Direktor Köln","main":false,"band":4},{"id":179,"p":178,"n":"Wolfgang Stein","b":1936,"d":null,"ap":false,"df":"","pr":"Kaufmann","note":"","dt":"*1936, Kaufmann","main":false,"band":4},{"id":180,"p":178,"n":"Brigitte Stein","b":1941,"d":null,"ap":false,"df":"","pr":"Lehrerin","note":"⚭ Werner Schmitz, Jurist ORR Köln","dt":"*1941, Lehrerin","main":false,"band":4},{"id":181,"p":180,"n":"Andreas Schmitz","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":182,"p":180,"n":"Thomas Schmitz","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":183,"p":178,"n":"Gisela Stein","b":1947,"d":null,"ap":false,"df":"","pr":"Rechtspflegerin","note":"⚭ Paul Jacob, Staatsanwalt München","dt":"*1947, Rechtspflegerin","main":false,"band":4},{"id":184,"p":176,"n":"Helga (Maria Sophie) Stein","b":1913,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Carl Jochen Brandt, Kaufmann München","dt":"*1913","main":false,"band":4},{"id":185,"p":184,"n":"Carl Jürgen Brandt","b":1935,"d":1973,"ap":false,"df":"","pr":"Rechtsanwalt","note":"⚭ Brigitte Dohrmann","dt":"1935–1973, Rechtsanwalt","main":false,"band":4},{"id":186,"p":185,"n":"Carl Jörg Brandt","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":187,"p":185,"n":"Dirk Brandt","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":188,"p":185,"n":"Jochen Brandt","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":189,"p":184,"n":"Bärbel Brandt","b":1940,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Ludolph Hoesch","dt":"*1940","main":false,"band":4},{"id":190,"p":189,"n":"Sabine Hoesch","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":191,"p":184,"n":"Bernd-Axel Brandt","b":1942,"d":null,"ap":false,"df":"","pr":"Bankdirektor London","note":"⚭ Margret Mäckelmann","dt":"*1942, Bankdirektor London","main":false,"band":4},{"id":192,"p":191,"n":"Carl Axel Brandt","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":4},{"id":193,"p":184,"n":"Angelika Brandt","b":1946,"d":null,"ap":false,"df":"","pr":"Dipl.-Psych.","note":"","dt":"*1946, Dipl.-Psych.","main":false,"band":4},{"id":194,"p":176,"n":"Gertraude (Hedwig Anna) Stein","b":1917,"d":2009,"ap":false,"df":"","pr":"","note":"⚭ Diethelm Jaeger (1916–1973), Kaufmann Neubrandenburg","dt":"*1917","main":true,"band":4},{"id":195,"p":194,"n":"Hellwart Jaeger","b":1943,"d":null,"ap":false,"df":"","pr":"Bauingenieur, Stifter der Jaeger Stiftung","note":"Bauingenieur · Stifter der Jaeger Stiftung","dt":"*7.10.1943","main":true,"band":4,"alive":true},{"id":196,"p":195,"n":"Helmut Jaeger","b":1982,"d":null,"ap":false,"df":"","pr":"","note":"Sohn, Vorsorgebevollmächtigter (Quelle: Stiftungsunterlagen)","dt":"*12.2.1982","main":true,"band":4,"alive":true},{"id":197,"p":194,"n":"Matthias Jaeger","b":1945,"d":2014,"ap":false,"df":"","pr":"akad. Kunstmaler","note":"","dt":"1945–2014, akad. Kunstmaler","main":true,"band":4},{"id":198,"p":197,"n":"Paul Jaeger","b":null,"d":null,"ap":false,"df":"","pr":"","note":"Sohn (Quelle: Stiftungsunterlagen)","dt":"","main":true,"band":4},{"id":199,"p":197,"n":"Tilmann Jaeger","b":null,"d":null,"ap":false,"df":"","pr":"","note":"Sohn (Quelle: Stiftungsunterlagen)","dt":"","main":true,"band":4},{"id":200,"p":194,"n":"Heiner Jaeger","b":1962,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*12.6.1962","main":true,"band":4,"alive":true},{"id":201,"p":200,"n":"Anton Jaeger","b":1999,"d":null,"ap":false,"df":"","pr":"","note":"Sohn, potenzieller Nacherbe (Quelle: Stiftungsunterlagen)","dt":"*4.5.1999","main":true,"band":4,"alive":true},{"id":202,"p":5,"n":"Adolf (Friedrich) Sternitzki","b":1838,"d":1914,"ap":false,"df":"","pr":"Kaufmann in St. Petersburg, eingeäschert Mainz 1914","note":"Kaufmann in St. Petersburg, eingeäschert Mainz 1914 · ⚭ (Louise) Wilhelmine (Henriette) Marx · 8 Kinder","dt":"1838–1914","main":false,"band":5},{"id":203,"p":202,"n":"Ludwig Sternitzki","b":1865,"d":1926,"ap":false,"df":"","pr":"Pianist","note":"","dt":"1865–1926, Pianist","main":false,"band":5},{"id":204,"p":202,"n":"Fritz Sternitzki","b":1867,"d":1929,"ap":false,"df":"","pr":"Kaufmann, „erblich ehrenwerter Bürger“ St. Petersburg","note":"⚭ Fanni Mielck","dt":"1867–1929, Kaufmann, „erblich ehrenwerter Bürger“ St. Petersburg","main":false,"band":5},{"id":205,"p":204,"n":"Ilse Adelheid Adolfine Sternitzki","b":1898,"d":1917,"ap":false,"df":"nach","pr":"(Warschau)","note":"","dt":"*1898, †nach 1917 (Warschau)","main":false,"band":5},{"id":206,"p":204,"n":"Alice Alexandrine Bernhardine Sternitzki","b":1905,"d":null,"ap":false,"df":"","pr":"Stadtsekretärin","note":"","dt":"*1905, Stadtsekretärin","main":false,"band":5},{"id":207,"p":202,"n":"Hermann Sternitzki","b":1869,"d":1972,"ap":false,"df":"","pr":"Dr. Chemiker Berlin","note":"⚭ Ada Fey · keine Kinder","dt":"1869–1972, Dr. Chemiker Berlin","main":false,"band":5},{"id":208,"p":202,"n":"Luise Sternitzki","b":1871,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Alfred Gerwig (†1915, auf der Flucht aus Russland) · 5 Kinder, St.Petersburg","dt":"*1871","main":false,"band":5},{"id":209,"p":208,"n":"Alfred Gerwig","b":1898,"d":1921,"ap":false,"df":"","pr":"gest. St. Blasien","note":"","dt":"1898–1921, gest. St. Blasien","main":false,"band":5},{"id":210,"p":208,"n":"Vera Gerwig","b":1900,"d":1942,"ap":false,"df":"","pr":"","note":"⚭ Paul Scheer, Kaufmann · keine Kinder","dt":"1900–1942","main":false,"band":5},{"id":211,"p":208,"n":"Alice Gerwig","b":1903,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1903","main":false,"band":5},{"id":212,"p":208,"n":"Irene Gerwig","b":1905,"d":null,"ap":false,"df":"","pr":"","note":"⚭ H. Doerner, Dr.jur.","dt":"*1905","main":false,"band":5},{"id":213,"p":212,"n":"Dieter Doerner","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":5},{"id":214,"p":212,"n":"Jürgen Doerner","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":5},{"id":215,"p":212,"n":"Barbara Doerner","b":null,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"","main":false,"band":5},{"id":216,"p":208,"n":"Arthur Gerwig","b":1907,"d":1942,"ap":false,"df":"vermisst","pr":"Dipl.-Landw.","note":"⚭ Lisel Gilka · 2 Töchter (unbenannt)","dt":"*1907, verm. Russland 1942, Dipl.-Landw.","main":false,"band":5},{"id":217,"p":202,"n":"Adolf Sternitzki","b":1875,"d":1945,"ap":false,"df":"","pr":"","note":"⚭ Sophie Habermann · 2 Kinder, St. Petersburg","dt":"1875–1945","main":false,"band":5},{"id":218,"p":217,"n":"Gertrud Sternitzki","b":1906,"d":1921,"ap":false,"df":"","pr":"","note":"","dt":"1906–1921","main":false,"band":5},{"id":219,"p":217,"n":"Georg Sternitzki","b":1908,"d":1942,"ap":false,"df":"vermisst","pr":"","note":"","dt":"*1908, vermißt Russland 1942","main":false,"band":5},{"id":220,"p":202,"n":"Klara Sternitzki","b":1877,"d":1946,"ap":false,"df":"","pr":"","note":"⚭ Paul Thieme, Namslau/Schlesien · 3 Kinder","dt":"1877–1946","main":false,"band":5},{"id":221,"p":220,"n":"Herbert Thieme","b":1904,"d":1969,"ap":false,"df":"","pr":"","note":"","dt":"1904–1969","main":false,"band":5},{"id":222,"p":220,"n":"Eleonore Thieme","b":1906,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Walter Specht-Fey, Chemiker","dt":"*1906","main":false,"band":5},{"id":223,"p":222,"n":"Eva Specht-Fey","b":1939,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1939","main":false,"band":5},{"id":224,"p":220,"n":"Eugenie Thieme","b":1908,"d":null,"ap":false,"df":"","pr":"","note":"⚭ F. Alexandrowicz, Kaufmann · keine Kinder","dt":"*1908","main":false,"band":5},{"id":225,"p":220,"n":"Paul-Hans Thieme","b":1911,"d":null,"ap":false,"df":"","pr":"Dr.-Landgerichtsrat","note":"⚭ Ursula Thomas","dt":"*1911, Dr.-Landgerichtsrat","main":false,"band":5},{"id":226,"p":225,"n":"Doris Thieme","b":1941,"d":null,"ap":false,"df":"","pr":"","note":"⚭ Wolfgang von Guenther, Rechtsanwalt","dt":"*1941","main":false,"band":5},{"id":227,"p":226,"n":"Julia von Guenther","b":1971,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1971","main":false,"band":5},{"id":228,"p":226,"n":"Andrea von Guenther","b":1975,"d":null,"ap":false,"df":"","pr":"","note":"","dt":"*1975","main":false,"band":5},{"id":229,"p":202,"n":"Eugenie Sternitzki","b":1881,"d":null,"ap":false,"df":"","pr":"unverh.","note":"","dt":"*1881, unverh.","main":false,"band":5},{"id":230,"p":202,"n":"Hans Sternitzki","b":1884,"d":1936,"ap":false,"df":"","pr":"","note":"⚭ Erna Palckel · 1 Tochter (unbenannt, *um 1923)","dt":"*1884, †Berlin 1936","main":false,"band":5},{"id":300,"p":null,"n":"Maria Dietz","b":1796,"d":1866,"ap":false,"df":"","pr":"","note":"⚭ Andreas Benjamin Sternitzki","dt":"1796–1866","main":true,"band":0,"sp":5},{"id":301,"p":null,"n":"Adolf Stein","b":1827,"d":1899,"ap":false,"df":"","pr":"Buchdrucker, Frankfurt/M","note":"⚭ Sophie Sternitzki · 8 Kinder","dt":"1827–1899","main":true,"band":4,"sp":133},{"id":302,"p":null,"n":"Emma Jüngst","b":1877,"d":1963,"ap":false,"df":"","pr":"","note":"⚭ Prof. Dr. Philipp Stein · 4 Kinder","dt":"1877–1963","main":true,"band":4,"sp":176},{"id":303,"p":null,"n":"Diethelm Jaeger","b":1916,"d":1973,"ap":false,"df":"","pr":"Kaufmann, Lyriker, Neubrandenburg","note":"⚭ Gertraude Stein · Söhne Hellwart, Matthias, Heiner","dt":"1916–1973","main":true,"band":4,"sp":194},{"id":304,"p":null,"n":"Wilhelm Hans Jaeger","b":1888,"d":1979,"ap":false,"df":"","pr":"Bildhauer","note":"„Onkel Wim“ · Sohn des Firmengründers Wilhelm Jaeger · Bildhauer und künstl. Leiter der Bauschmuckwerkstätten; Mudder-Schulten-Brunnen","dt":"1888–1979","main":false,"band":4,"sp":null},{"id":305,"p":null,"n":"Horst Jaeger","b":1918,"d":1961,"ap":false,"df":"","pr":"","note":"Familie und Firma Wilh. Jaeger","dt":"1918–1961","main":false,"band":4,"sp":null}];
+(async function(){
+const Y0=1700, Y1=2036, PX=6.4, ML=46, RH=30, NOW=2026;
+const W = ML*2 + (Y1-Y0)*PX;
+const x = y => ML + (y-Y0)*PX;
+const byId = {}; DATA.forEach(o=>byId[o.id]=o);
+const kids = {}; DATA.forEach(o=>{ if(o.p!=null){ (kids[o.p]=kids[o.p]||[]).push(o.id);} });
+const CATS = [
+  ['linie','Direkte Linie Jaeger','#1f1d1a'],
+  ['kunst','Kunst & Fotografie','#8cc7ea'],
+  ['handel','Handel & Handwerk','#f0c43f'],
+  ['wissen','Wissenschaft, Technik & Recht','#95c75a'],
+  ['bildung','Bildung & Dienst','#2f9aad'],
+  ['none','Ohne Berufsangabe','#c9bddf'],
+  ['epoche','Epochen & Ereignisse','#bdb293']
+];
+const CCOL = Object.fromEntries(CATS.map(c=>[c[0],c[2]]));
+const CNAME = Object.fromEntries(CATS.map(c=>[c[0],c[1]]));
+function cat(o){
+  if(o.main) return 'linie';
+  const s=o.pr||'';
+  if(/Lehrer|Studienrat|Rektor|Kindergärtner|Pfarrer|Gymnastik|Gymnasialprof|Dozent|Oberinspektor|Stadtsekret/.test(s)) return 'bildung';
+  if(/Maler|Graveur|Photograph|Fotograf|Pianist|Grafik|Bildhauer|Lyriker|Journalist|Publizist|Schneidermeister/.test(s)) return 'kunst';
+  if(/Dr|Prof|Ing|Chemiker|Jurist|Rechtsanwalt|Arzt|Apothek|Rat\b|rat\b|Syndikus|Reg\.|Landgerichts|cand|stud|Psych|Rechtspfleg|Funktechnik|Direktor/.test(s)) return 'wissen';
+  if(/Kaufm|Drechsl|Tapezier|Möbel|Konditor|Landw|Gärtner|Schmelzer|Buchdruck|kfm|Sekretär|Bank|Kassierer|Angestellt|Polier|Buchhalt|Generalagent/.test(s)) return 'handel';
+  return 'none';
+}
+const BANDS = [
+  'Ursprung · Schlesien → Breslau → Wiesbaden',
+  'Zweig 1 · Wilhelm Sternitzki · Bad Ems, Braunschweig',
+  'Zweig 2 · Heinrich Sternitzki · Wiesbaden',
+  'Zweig 3 · Amalie Sternitzki ⚭ Port · Moskau, Fulda',
+  'Zweig 4 · Sophie Sternitzki ⚭ Stein → Jaeger',
+  'Zweig 5 · Adolf Sternitzki · St. Petersburg'
+];
+await Promise.all([
+  document.fonts.load('600 11px "Barlow Condensed"'), document.fonts.load('700 11px "Barlow Condensed"'),
+  document.fonts.load('500 8px "Barlow Condensed"'), document.fonts.load('italic 900 100px Fraunces'),
+  document.fonts.load('700 30px Fraunces')
+]).catch(()=>{});
+const cv=document.createElement('canvas').getContext('2d');
+const mw=(font,t)=>{cv.font=font;return cv.measureText(t).width;};
+const F_NAME='600 11px "Barlow Condensed", "Arial Narrow", Arial', F_NAMEB='700 11px "Barlow Condensed", "Arial Narrow", Arial',
+      F_TAG='500 8px "Barlow Condensed", "Arial Narrow", Arial', F_DATE='600 7.5px "Barlow Condensed", "Arial Narrow", Arial';
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function dateStr(o){
+  const b=(o.ap?'um ':'')+o.b;
+  if(o.d) return b+'–'+(o.df&&o.df.includes('nach')?'nach ':'')+o.d;
+  if(o.alive) return '*'+o.b;
+  return '*'+b;
+}
+// build items
+const items = DATA.filter(o=>o.b!=null).map(o=>{
+  const c=cat(o);
+  const fade = !o.d && !o.alive;
+  const ey = o.d ? o.d : (o.alive ? NOW : Math.min(o.b+32, NOW));
+  let tag='';
+  if(o.sp!=null) tag='⚭ '+byId[o.sp].n;
+  else if(o.pr){ tag=o.pr.split(/,| — /)[0].trim(); if(tag.length>30) tag=tag.slice(0,29)+'…'; }
+  const name=o.n.toUpperCase(), TAG=tag.toUpperCase();
+  const lw = mw(o.main?F_NAMEB:F_NAME,name) + (TAG? 5+mw(F_TAG,TAG):0);
+  const ds = dateStr(o), dw = mw(F_DATE,ds);
+  const x0=x(o.b); let x1=x(ey); if(x1-x0<4) x1=x0+4;
+  const inside = (x1-x0) >= dw+8;
+  const ext0 = x0-4, ext1 = Math.max(x0+lw, inside? x1 : x1+4+dw) + 12;
+  return {o,c,fade,x0,x1,name,TAG,ds,inside,ext0,ext1,war:/gefallen|vermisst/.test(o.df||'')};
+});
+const itemById={}; items.forEach(it=>itemById[it.o.id]=it);
+
+// layout
+const TOP = 5*RH;
+let row = 0; const bandBoxes=[];
+for(let bi=0; bi<BANDS.length; bi++){
+  const its = items.filter(it=>it.o.band===bi).sort((a,b)=>a.o.b-b.o.b || (b.o.main-a.o.main));
+  const rows=[];
+  its.forEach(it=>{
+    let r=rows.findIndex(end=>end<=it.ext0);
+    if(r<0){ r=rows.length; rows.push(0); }
+    rows[r]=it.ext1; it.row=row+r; it.y=TOP+it.row*RH;
+  });
+  const minX=Math.min(...its.map(i=>i.ext0))-24, maxX=Math.max(...its.map(i=>i.ext1))+4;
+  bandBoxes.push({bi, x0:minX, x1:Math.min(maxX,W-12), y0:TOP+row*RH-6, y1:TOP+(row+rows.length)*RH-2, n:its.length});
+  row += rows.length + 1;
+}
+const bandsBottom = TOP + row*RH;
+const ERAS = [
+  [ ['Heiliges Römisches Reich',1700,1806], ['Deutscher Bund',1815,1866], ['Deutsches Kaiserreich',1871,1918], ['Weimar',1918,1933], ['NS-Diktatur',1933,1945], ['Bundesrepublik Deutschland',1949,NOW] ],
+  [ ['Königreich Preußen',1701,1918], ['DDR',1949,1990] ],
+  [ ['Russisches Kaiserreich',1721,1917], ['Sowjetunion',1922,1991] ]
+];
+const erasTop = bandsBottom + RH*0.3;
+const H = erasTop + ERAS.length*RH + 90;
+
+let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" id="poster">`;
+s += `<defs>
+  <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#c9a6f0" stop-opacity=".55"/><stop offset="1" stop-color="#c9a6f0" stop-opacity="0"/></radialGradient>
+  <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f1d1a"/></marker>
+  ${CATS.map(c=>`<linearGradient id="f_${c[0]}" x1="0" x2="1"><stop offset="0" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--'+c[0]).trim()}"/><stop offset=".35" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--'+c[0]).trim()}"/><stop offset="1" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--'+c[0]).trim()}" stop-opacity="0"/></linearGradient>`).join('')}
+</defs>`;
+s += `<rect width="${W}" height="${H}" fill="#f7f3e8"/>`;
+s += `<ellipse cx="${x(1880)}" cy="46" rx="${PX*140}" ry="70" fill="url(#glow)"/>`;
+// stripes
+for(let yy=TOP-RH; yy<bandsBottom; yy+=RH){ s+=`<rect x="12" y="${yy+RH-7}" width="${W-24}" height="2.4" fill="#e6dfcd"/><rect x="12" y="${yy+RH-3.5}" width="${W-24}" height="1" fill="#ece6d7"/>`; }
+// axes
+function axis(y, labelsAbove){
+  let a=`<rect x="${x(Y0)-8}" y="${y-2}" width="${(Y1-Y0)*PX+16}" height="4" fill="#8f8671"/>`;
+  for(let yr=Y0; yr<=2030; yr+=10){
+    const big = yr%50===0;
+    a+=`<rect x="${x(yr)-(big?1.5:1)}" y="${y-(big?11:6)}" width="${big?3:2}" height="${big?22:12}" fill="#8f8671"/>`;
+    if(big) a+=`<text x="${x(yr)}" y="${labelsAbove? y-18 : y+30}" text-anchor="middle" font-size="15" font-weight="600" fill="#6d6553">${yr}</text>`;
+  }
+  return a;
+}
+s += axis(52,true);
+// war brackets on top
+[['1. WK',1914,1918],['2. WK',1939,1945]].forEach(([l,a,b])=>{
+  s+=`<path d="M${x(a)} 40 V30 H${x(b)} V40" fill="none" stroke="#6d6553" stroke-width="1.5"/><text x="${(x(a)+x(b))/2}" y="25" text-anchor="middle" font-size="10" font-weight="700" fill="#6d6553">${l}</text>`;
+});
+// events
+const EV = [
+  [1705,'um 1705 · Christoph Sternicke, Schön-Ellguth'],[1740,'Preußen erobert Schlesien'],[1806,'Ende des Alten Reichs'],[1848,'Märzrevolution'],
+  [1871,'Reichsgründung'],[1880,'Firma Wilh. Jaeger, Neubrandenburg'],[1912,'Erste Jaeger-Stiftung'],[1961,'Mauerbau'],
+  [1962,'Enteignung der Stiftung'],[1989,'Mauerfall'],[2026,'Jaeger Stiftung']
+];
+const evRows=[];
+EV.forEach(([yr,l])=>{
+  const t=l.toUpperCase(), w=mw('700 10px "Barlow Condensed"',t)+14;
+  let x0=x(yr)-3; if(x0+w>W-14) x0=W-14-w;
+  let r=evRows.findIndex(e=>e<=x0); if(r<0){r=evRows.length;evRows.push(0);} evRows[r]=x0+w+10;
+  const yy=70+r*22;
+  s+=`<rect x="${x(yr)-1}" y="${yy+4}" width="7" height="7" rx="1" fill="#bdb293"/><text x="${x0+ (x0<x(yr)-3?0:11)}" y="${yy+12}" font-size="10" font-weight="700" letter-spacing=".04em" fill="#4a4436" ${x0<x(yr)-3?'':''}>${esc(t)}</text>`;
+});
+// band boxes
+bandBoxes.forEach(b=>{
+  s+=`<rect x="${b.x0}" y="${b.y0}" width="${b.x1-b.x0}" height="${b.y1-b.y0}" fill="none" stroke="#b9ae90" stroke-width="1.2"/>`;
+  const cx=b.x0+11, cy=(b.y0+b.y1)/2;
+  const lbl = BANDS[b.bi].toUpperCase();
+  s+=`<text transform="translate(${cx} ${cy}) rotate(-90)" text-anchor="middle" dominant-baseline="middle" font-size="${(b.y1-b.y0)>340?10.5:9}" font-weight="600" letter-spacing=".1em" fill="#8a8068">${esc(lbl)}</text>`;
+});
+// items
+items.forEach(it=>{
+  const {o,c}=it, y=it.y, by=y+14, bh=10, col=CCOL[c];
+  let g=`<g class="it" data-id="${o.id}" data-c="${c}" tabindex="0" role="button" aria-label="${esc(o.n+', '+it.ds)}">`;
+  g+=`<rect class="hl" x="${it.x0-4}" y="${y+1}" width="${it.ext1-it.x0-6}" height="${RH-5}" rx="3"/>`;
+  g+=`<rect x="${it.x0-4}" y="${y+1}" width="${it.ext1-it.x0-6}" height="${RH-5}" fill="transparent"/>`;
+  g+=`<text class="nm" x="${it.x0}" y="${y+11}" font-size="11" font-weight="${o.main?700:600}" fill="#1f1d1a">${esc(it.name)}${it.TAG?`<tspan dx="5" font-size="8" font-weight="500" fill="#5b554a" letter-spacing=".03em">${esc(it.TAG)}</tspan>`:''}</text>`;
+  g+=`<rect x="${it.x0}" y="${by}" width="${it.x1-it.x0}" height="${bh}" fill="${it.fade?`url(#f_${c})`:col}"/>`;
+  if(o.alive) g+=`<path d="M${it.x1} ${by-2} l6 ${bh/2+2} l-6 ${bh/2+2}z" fill="${col}"/>`;
+  if(it.war) g+=`<rect x="${it.x1-3}" y="${by}" width="3" height="${bh}" fill="#e0524a"/>`;
+  const dark = (c==='linie'||c==='bildung');
+  if(it.inside) g+=`<text x="${it.x0+3}" y="${by+7.6}" font-size="7.5" font-weight="600" fill="${dark?'#f7f3e8':'#1f1d1a'}">${esc(it.ds)}</text>`;
+  else g+=`<text x="${it.x1+4}" y="${by+7.6}" font-size="7.5" font-weight="600" fill="#6d6553">${esc(it.ds)}</text>`;
+  g+='</g>';
+  s+=g;
+});
+// direct-line connectors
+const LINKS=[[0,1],[1,5],[5,133],[133,176],[176,194],[194,195],[194,197],[194,200],[195,196],[200,201]];
+let con='';
+LINKS.forEach(([a,b])=>{
+  const A=itemById[a], B=itemById[b]; if(!A||!B) return;
+  const px=Math.min(Math.max(B.x0-10, A.x0+6), A.x1-2), py=A.y+19, cx=B.x0-3, cy=B.y+19;
+  const dx=Math.max(24, Math.abs(cy-py)*0.12);
+  con+=`<path d="M${px} ${py} C${px-dx} ${py+ (cy>py?12:-12)} ${cx-dx-10} ${cy} ${cx} ${cy}" fill="none" stroke="#1f1d1a" stroke-width="1.2" marker-end="url(#ar)"/>`;
+});
+s+=`<g id="con" opacity=".75">${con}</g>`;
+// eras
+ERAS.forEach((r,ri)=>{
+  const y=erasTop+ri*RH;
+  r.forEach(([l,a,b])=>{
+    s+=`<text x="${x(a)}" y="${y+11}" font-size="10.5" font-weight="700" letter-spacing=".05em" fill="#4a4436">${esc(l.toUpperCase())}</text><rect x="${x(a)}" y="${y+14}" width="${x(b)-x(a)}" height="9" fill="#bdb293"/><text x="${x(a)+3}" y="${y+21.3}" font-size="7.5" font-weight="600" fill="#3d382c">${a}–${b===NOW?'':b}</text>`;
+  });
+});
+s += axis(H-46,false);
+
+// title + legend in the free zone
+const freeX0 = ML, freeX1 = Math.min(...bandBoxes.filter(b=>b.bi>0).map(b=>b.x0)) - 26;
+const freeY0 = bandBoxes[0].y1 + RH, freeY1 = bandsBottom - RH*0.6;
+// legend
+const LX=freeX0+4, LY=freeY0+6, LW=Math.min(270, freeX1-freeX0-8), LI=31;
+let lg=`<rect x="${LX}" y="${LY}" width="${LW}" height="${CATS.length*LI+86}" fill="#fffdf7" stroke="#1f1d1a" stroke-width="2"/>`;
+CATS.forEach((c,i)=>{
+  const yy=LY+14+i*LI;
+  lg+=`<g class="lg" data-c="${c[0]}" tabindex="0" role="button" aria-label="Filter ${esc(c[1])}"><rect x="${LX+14}" y="${yy}" width="${LW-28}" height="23" fill="${c[2]}"/><text x="${LX+24}" y="${yy+16}" font-size="13" font-weight="700" letter-spacing=".07em" fill="${(c[0]==='linie'||c[0]==='bildung')?'#f7f3e8':'#1f1d1a'}">${esc(c[1].toUpperCase())}</text></g>`;
+});
+const ly2=LY+14+CATS.length*LI+4;
+lg+=`<rect x="${LX+14}" y="${ly2+4}" width="30" height="8" fill="url(#f_none)"/><text x="${LX+52}" y="${ly2+12}" font-size="10.5" font-weight="600" fill="#4a4436">Sterbejahr nicht überliefert</text>`;
+lg+=`<rect x="${LX+14}" y="${ly2+20}" width="30" height="8" fill="#c9bddf"/><rect x="${LX+41}" y="${ly2+20}" width="3" height="8" fill="#e0524a"/><text x="${LX+52}" y="${ly2+28}" font-size="10.5" font-weight="600" fill="#4a4436">gefallen oder vermisst</text>`;
+lg+=`<path d="M${LX+16} ${ly2+38} C${LX+10} ${ly2+46} ${LX+26} ${ly2+50} ${LX+42} ${ly2+48}" fill="none" stroke="#1f1d1a" stroke-width="1.2" marker-end="url(#ar)"/><text x="${LX+52}" y="${ly2+50}" font-size="10.5" font-weight="600" fill="#4a4436">Eltern → Kind, direkte Linie</text>`;
+s+=lg;
+const nDated=items.length, nAll=DATA.length;
+s+=`<g id="ttl"><text x="${freeX0+4}" y="0" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="40" letter-spacing=".01em" fill="#1f1d1a" id="t1">DIE GROSSE KARTE:</text>
+<g font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="900" fill="#1f1d1a" style="font-variation-settings:'SOFT' 100,'WONK' 1">
+<text id="t2" x="${freeX0}" y="0" font-size="150">WER</text><text id="t3" x="${freeX0}" y="0" font-size="150">LEBTE</text><text id="t4" x="${freeX0}" y="0" font-size="150">WANN?</text></g>
+<text id="t5" x="${freeX0+6}" y="0" font-size="17" font-weight="600" letter-spacing=".04em" fill="#4a4436">FAMILIE STERNITZKI · STEIN · JAEGER — UM 1705 BIS HEUTE</text>
+<text id="t6" x="${freeX0+6}" y="0" font-size="14" font-weight="500" letter-spacing=".03em" fill="#6d6553">${nDated} von ${nAll} Personen mit Lebensdaten · ${nAll-nDated} ohne Daten stehen in den Details der Eltern</text></g>`;
+s+='</svg>';
+const wrap=document.getElementById('wrap'); wrap.innerHTML=s;
+const svg=document.getElementById('poster');
+// fit title
+(function(){
+  const avail=freeX1-freeX0-8, ids=['t2','t3','t4'];
+  let maxw=Math.max(...ids.map(i=>document.getElementById(i).getComputedTextLength()));
+  let fs=150*Math.min(1.15, avail/maxw); fs=Math.min(fs,175);
+  ids.forEach(i=>document.getElementById(i).setAttribute('font-size',fs.toFixed(1)));
+  const lh=fs*0.9; let y=freeY1-44;
+  document.getElementById('t6').setAttribute('y',y+30);
+  document.getElementById('t5').setAttribute('y',y+8);
+  document.getElementById('t4').setAttribute('y',y-18);
+  document.getElementById('t3').setAttribute('y',y-18-lh);
+  document.getElementById('t2').setAttribute('y',y-18-2*lh);
+  const t1=document.getElementById('t1'); const w1=t1.getComputedTextLength(); if(w1>avail) t1.setAttribute('font-size',(40*avail/w1).toFixed(1));
+  t1.setAttribute('y',y-18-3*lh+8);
+})();
+
+// zoom
+let z='fit';
+function applyZoom(){
+  const fitScale=(wrap.clientWidth)/W;
+  const sc = z==='fit'?fitScale:z;
+  svg.setAttribute('width',W*sc); svg.setAttribute('height',H*sc);
+  document.getElementById('zf').setAttribute('aria-pressed', z==='fit');
+}
+const steps=[0.35,0.5,0.75,1,1.4,2];
+function cur(){ return z==='fit'? wrap.clientWidth/W : z; }
+document.getElementById('zi').onclick=()=>{ const c=cur(); z=steps.find(s=>s>c+0.01)||2; applyZoom(); };
+document.getElementById('zo').onclick=()=>{ const c=cur(); const f=[...steps].reverse().find(s=>s<c-0.01); z=(f==null||f<=wrap.clientWidth/W)?'fit':f; applyZoom(); };
+document.getElementById('zf').onclick=()=>{ z='fit'; applyZoom(); };
+addEventListener('resize',()=>{ if(z==='fit') applyZoom(); });
+applyZoom();
+
+// filter
+let filt=null;
+function applyFilter(){
+  svg.querySelectorAll('.it').forEach(g=>g.classList.toggle('dim', !!filt && g.dataset.c!==filt));
+  svg.querySelectorAll('.lg').forEach(g=>g.classList.toggle('dim', !!filt && g.dataset.c!==filt));
+  document.getElementById('con').style.opacity = (filt&&filt!=='linie')?.08:.75;
+}
+svg.querySelectorAll('.lg').forEach(g=>{
+  const h=()=>{ const c=g.dataset.c; if(c==='epoche'){filt=null;} else filt=(filt===c?null:c); applyFilter(); };
+  g.addEventListener('click',h); g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();h();} });
+});
+
+// selection + card
+const card=document.getElementById('card');
+function nameLink(id){ const o=byId[id]; const it=itemById[id];
+  const d = it? ' <span style="color:#6d6553">('+esc(it.ds)+')</span>' : '';
+  return it? `<a data-go="${id}">${esc(o.n)}</a>${d}` : esc(o.n);
+}
+function select(id, scroll){
+  svg.querySelectorAll('.it.sel,.it.rel').forEach(g=>g.classList.remove('sel','rel'));
+  const o=byId[id], it=itemById[id]; if(!o) return;
+  const g=svg.querySelector(`.it[data-id="${id}"]`); if(g) g.classList.add('sel');
+  const rels=[o.p, o.sp, ...(kids[id]||[]), ...DATA.filter(q=>q.sp===id).map(q=>q.id)].filter(v=>v!=null);
+  rels.forEach(r=>{ const e=svg.querySelector(`.it[data-id="${r}"]`); if(e) e.classList.add('rel'); });
+  const c = it? it.c : cat(o);
+  const ch=(kids[id]||[]);
+  const spouseOf = DATA.filter(q=>q.sp===id);
+  let h=`<button class="x" aria-label="Schließen">×</button><h3>${esc(o.n)}</h3><div class="d">${it?esc(it.ds):'Lebensdaten nicht überliefert'}${o.df&&o.df!=='nach'?' · '+esc(o.df):''}${o.alive?' · lebt':''}</div>`;
+  h+=`<span class="chip" style="background:${CCOL[c]};${(c==='linie'||c==='bildung')?'color:#f7f3e8':''}">${esc(CNAME[c])}</span><span class="chip" style="background:#ece6d7">${esc(BANDS[o.band].split(' · ')[0])}</span>`;
+  const txt = o.note && o.note!==o.pr ? (o.pr? esc(o.pr)+'<br>':'')+esc(o.note) : esc(o.pr||'');
+  if(txt) h+=`<p>${txt}</p>`;
+  if(o.p!=null) h+=`<div class="k">Eltern</div><p>${nameLink(o.p)}</p>`;
+  if(o.sp!=null) h+=`<div class="k">Ehepartner</div><p>${nameLink(o.sp)}</p>`;
+  if(spouseOf.length) h+=`<div class="k">Ehepartner</div><p>${spouseOf.map(q=>nameLink(q.id)).join(', ')}</p>`;
+  if(ch.length) h+=`<div class="k">Kinder · ${ch.length}</div><p>${ch.map(nameLink).join(', ')}</p>`;
+  card.innerHTML=h; card.hidden=false;
+  card.querySelector('.x').onclick=()=>{ card.hidden=true; svg.querySelectorAll('.it.sel,.it.rel').forEach(g=>g.classList.remove('sel','rel')); };
+  card.querySelectorAll('[data-go]').forEach(a=>a.onclick=()=>select(+a.dataset.go,true));
+  if(scroll && it){
+    if(z==='fit' || z<1){ z=1; applyZoom(); }
+    const sc=cur();
+    wrap.scrollTo({left: Math.max(0,it.x0*sc - wrap.clientWidth*0.3), behavior:'smooth'});
+    const top = wrap.getBoundingClientRect().top + scrollY + it.y*sc - innerHeight*0.3;
+    scrollTo({top, behavior:'smooth'});
+    if(g){ g.classList.remove('flash'); void g.getBBox(); g.classList.add('flash'); }
+  }
+}
+svg.querySelectorAll('.it').forEach(g=>{
+  g.addEventListener('click',()=>select(+g.dataset.id,false));
+  g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();select(+g.dataset.id,false);} });
+});
+// search
+const dl=document.getElementById('names');
+const byName={}; DATA.forEach(o=>{ byName[o.n.toLowerCase()]=o.id; });
+dl.innerHTML=[...DATA].sort((a,b)=>a.n.localeCompare(b.n,'de')).map(o=>`<option value="${esc(o.n)}">`).join('');
+const q=document.getElementById('q');
+function go(){ const v=q.value.trim().toLowerCase(); if(!v) return;
+  let id=byName[v]; if(id==null){ const f=DATA.find(o=>o.n.toLowerCase().includes(v)); if(f) id=f.id; }
+  if(id!=null) select(id,true); }
+q.addEventListener('change',go); q.addEventListener('keydown',e=>{ if(e.key==='Enter') go(); });
+})();
+</script>
+
+</body></html>
