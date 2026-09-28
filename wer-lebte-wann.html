@@ -1,8 +1,23 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Wer lebte wann? Familie Jaeger</title>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>if(window.top!==window.self)document.documentElement.classList.add('embedded');</script>
+<title>Wer lebte wann? – Jaeger Stiftung</title>
+<meta name="description" content="Wer lebte wann? Die Lebenszeiten der Familie Sternitzki, Stein und Jaeger von 1705 bis heute auf einer interaktiven Zeitleiste.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jaeger Stiftung">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Wer lebte wann? – Jaeger Stiftung">
+<meta property="og:description" content="Wer lebte wann? Die Lebenszeiten der Familie Sternitzki, Stein und Jaeger von 1705 bis heute auf einer interaktiven Zeitleiste.">
+<meta property="og:image" content="https://aramradomski.github.io/J-gerstiftung/img/objekte/obj-buste-wilhelm-jaeger.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/allgemein/blob-92d0ca021faac3b33932c7e9d1f00b83.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,700,100,0;1,9..144,900,100,1&family=Barlow+Condensed:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,700,100,0;1,9..144,900,100,1&family=Barlow+Condensed:wght@400;500;600;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap">
+<link rel="stylesheet" href="assets/chrome.css">
 <style>
 :root{
   --page:#e9e3d5; --paper:#f7f3e8; --ink:#1f1d1a; --ink2:#5b554a; --rule:#e2dac7;
@@ -45,7 +60,31 @@ svg text{font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif}
 #card a{color:var(--ink);text-decoration:underline;text-decoration-color:#b9ad8e;cursor:pointer}
 #card .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--ink);padding:4px 6px}
 @media (prefers-reduced-motion:no-preference){ .it.flash .hl{animation:fl 1.1s ease 2} @keyframes fl{50%{stroke:var(--krieg);stroke-width:5}} }
+/* Kopf-/Fußzeile der Website */
+body{margin:0}
+.site-head{margin-inline:-16px;position:relative}
+.site-foot{margin-inline:-16px;margin-top:40px}
 </style>
+</head>
+<body>
+<a class="skip-link" href="#wrap">Zum Inhalt springen</a>
+<header class="site-head">
+  <div class="site-head-in">
+    <a class="site-brand" href="index.html"><img src="img/allgemein/blob-92d0ca021faac3b33932c7e9d1f00b83.png" alt="" width="30" height="30"><span>Jaeger <em>Stiftung</em></span></a>
+    <button class="site-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i>Menü</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hauptmenü">
+      <ul class="site-menu">
+        <li><a href="stiftung.html">Stiftung</a></li>
+        <li><a href="geschichte.html">Geschichte</a></li>
+        <li><a href="familie.html">Familie</a></li>
+        <li><a href="wilhelm-hans-jaeger.html">Wilhelm Hans Jaeger</a></li>
+        <li><a href="matthias-jaeger.html">Matthias Jaeger</a></li>
+        <li><a href="archiv.html">Archiv</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
 <div class="bar">
   <b>Wer lebte wann?</b>
@@ -354,4 +393,14 @@ q.addEventListener('change',go); q.addEventListener('keydown',e=>{ if(e.key==='E
 })();
 </script>
 
-</body></html>
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span>Jaeger Stiftung · Morgenlandstraße 35 · 17033 Neubrandenburg</span>
+    <span>Arbeitsstand 18.09.2026 · Werkfotos: <a href="https://bildstock.berlintapete.de/Culture-Heritage-MemoryLab/Jaegerworks/Matthias-Jaeger" target="_blank" rel="noopener">Werkarchiv Matthias Jaeger</a></span>
+    <span class="site-foot-links"><a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutz</a> <a href="mailto:aramradomski@me.com">Kontakt</a></span>
+    <span>© Jaeger Stiftung</span>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

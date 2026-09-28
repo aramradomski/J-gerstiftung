@@ -1,0 +1,41 @@
+/* Startseite: Titel-/Würfel-Sequenz */
+.icube-stage{position:relative;width:100%;min-height:100vh;min-height:100dvh;background:#0a0908;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;padding:max(28px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));box-sizing:border-box;gap:14px}
+.icube-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(226,103,63,.12),transparent 60%)}
+.icube-kicker{position:relative;z-index:2;color:#cfc9ba;font-size:11px;font-weight:650;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;opacity:.85}
+.icube-titlewrap{position:relative;z-index:2;flex:none}
+.icube-title{font-family:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;font-weight:420;font-size:clamp(26px,5vw,46px);color:#f5f2ea;text-align:center;margin:0 0 6px;letter-spacing:-.01em}
+.icube-sub{color:#a89f8f;font-size:13.5px;text-align:center;margin:0;letter-spacing:.02em}
+.icube-perspective{position:relative;z-index:2;--cw:min(76vw,720px);--ch:calc(var(--cw) * 2 / 3);--cd:calc(var(--ch) * .68819);width:var(--cw);height:var(--ch);perspective:1900px}
+.icube{position:absolute;inset:0;transform-style:preserve-3d;animation:icube-spin 20s infinite;animation-timing-function:ease-in-out}
+.icube-face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.08)}
+.icube-face img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.96) contrast(1.02)}
+.icube-face.f1{transform:rotateX(0deg) translateZ(var(--cd))}
+.icube-face.f2{transform:rotateX(72deg) translateZ(var(--cd))}
+.icube-face.f3{transform:rotateX(144deg) translateZ(var(--cd))}
+.icube-face.f4{transform:rotateX(216deg) translateZ(var(--cd))}
+.icube-face.f5{transform:rotateX(288deg) translateZ(var(--cd))}
+@keyframes icube-spin{
+  0%{transform:rotateX(0deg)}
+  16%{transform:rotateX(0deg)}
+  20%{transform:rotateX(-72deg)}
+  36%{transform:rotateX(-72deg)}
+  40%{transform:rotateX(-144deg)}
+  56%{transform:rotateX(-144deg)}
+  60%{transform:rotateX(-216deg)}
+  76%{transform:rotateX(-216deg)}
+  80%{transform:rotateX(-288deg)}
+  96%{transform:rotateX(-288deg)}
+  100%{transform:rotateX(-360deg)}
+}
+.icube-scroll{position:relative;z-index:2;margin-top:38px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#8f8878;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;animation:icube-bounce 2.2s ease-in-out infinite}
+.icube-scroll svg{width:16px;height:16px}
+@keyframes icube-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){
+  .icube{animation:none;transform:rotateX(0deg)}
+  .icube-scroll{animation:none}
+}
+@media (max-width:600px){
+  .icube-perspective{--cw:min(84vw,520px);perspective:1300px}
+  .icube-title{font-size:clamp(24px,7vw,34px)}
+}
+.icube-stage{min-height:calc(100vh - 59px);min-height:calc(100dvh - 59px)}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Matthias Jaeger – Jaeger Stiftung</title>
+<meta name="description" content="Matthias Jaeger (1945–2014), Maler und Grafiker: Werkgalerie „Gesichter in Kadmium und Ocker“, Skizzen und Studien sowie die Skizzenbücher als Diashow.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jaeger Stiftung">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Matthias Jaeger – Jaeger Stiftung">
+<meta property="og:description" content="Matthias Jaeger (1945–2014), Maler und Grafiker: Werkgalerie „Gesichter in Kadmium und Ocker“, Skizzen und Studien sowie die Skizzenbücher als Diashow.">
+<meta property="og:image" content="https://aramradomski.github.io/J-gerstiftung/img/werke/dsc4305.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/allgemein/blob-92d0ca021faac3b33932c7e9d1f00b83.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/chrome.css">
+</head>
+<body>
+<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+<header class="site-head">
+  <div class="site-head-in">
+    <a class="site-brand" href="index.html"><img src="img/allgemein/blob-92d0ca021faac3b33932c7e9d1f00b83.png" alt="" width="30" height="30"><span>Jaeger <em>Stiftung</em></span></a>
+    <button class="site-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i>Menü</button>
+    <nav class="site-nav" id="site-nav" aria-label="Hauptmenü">
+      <ul class="site-menu">
+        <li><a href="stiftung.html">Stiftung</a></li>
+        <li><a href="geschichte.html">Geschichte</a></li>
+        <li><a href="familie.html">Familie</a></li>
+        <li><a href="wilhelm-hans-jaeger.html">Wilhelm Hans Jaeger</a></li>
+        <li><a href="matthias-jaeger.html" aria-current="page">Matthias Jaeger</a></li>
+        <li><a href="archiv.html">Archiv</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="inhalt">
+  <nav class="subnav" aria-label="Abschnitte"><a href="#werk">Werke</a><a href="#skizzen">Skizzen und Studien</a><a href="#buecher">Skizzenbücher</a></nav>
+  <section id="werk">
+    <div class="eyebrow">Werkarchiv Matthias Jaeger</div>
+    <h2>Gesichter in Kadmium und Ocker</h2>
+    <p class="lead" style="margin-bottom:18px">Werkaufnahmen vom Februar 2015 aus dem Atelierbestand in Neubrandenburg. Titel und Datierungen werden im Zuge der Erschließung ergänzt.</p>
+    <a class="mj-link" href="https://bildstock.berlintapete.de/Culture-Heritage-MemoryLab/Jaegerworks/Matthias-Jaeger" target="_blank" rel="noopener">Gesamter Werkbestand Matthias Jaeger im Bildarchiv ↗</a>
+    <div class="tl-filter" role="group" aria-label="Galerie filtern">
+      <button class="chip" aria-pressed="true" data-g="all">Alle</button>
+      <button class="chip" aria-pressed="false" data-g="portrait">Porträts</button>
+      <button class="chip" aria-pressed="false" data-g="land">Landschaft &amp; Stadt</button>
+      <button class="chip" aria-pressed="false" data-g="raum">Raum &amp; Fläche</button>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <section id="skizzen">
+    <div class="eyebrow">Diashow · Werkarchiv Matthias Jaeger</div>
+    <h2>Skizzen und Studien</h2>
+    <p class="lead" style="margin-bottom:18px">Zweiunddreißig Ölskizzen auf ungespannter Leinwand, aufgenommen im Februar 2015 im Atelier in Neubrandenburg. Die Titel sind Arbeitstitel und werden bei der Erschließung ersetzt.</p>
+    <a class="mj-link" href="https://bildstock.berlintapete.de/Culture-Heritage-MemoryLab/Jaegerworks/Matthias-Jaeger" target="_blank" rel="noopener">Alle Skizzen und Studien im Bildarchiv ↗</a>
+    <div class="show" id="show" role="region" aria-roledescription="Diashow" aria-label="Skizzen von Matthias Jaeger">
+      <div class="show-stage" id="showStage" aria-live="polite">
+        <button class="show-nav prev" id="showPrev" aria-label="Vorheriges Bild">‹</button>
+        <button class="show-nav next" id="showNext" aria-label="Nächstes Bild">›</button>
+      </div>
+      <div class="show-prog"><i id="showProg"></i></div>
+      <div class="show-bar">
+        <span class="num" id="showNum">01 / 32</span>
+        <span class="cap" id="showCap"></span>
+        <button id="showPlay" aria-pressed="true">Pause</button>
+        <button id="showFs">Vollbild</button>
+      </div>
+      <div class="show-thumbs" id="showThumbs" aria-label="Bildauswahl"></div>
+    </div>
+  </section>
+
+  <section id="buecher">
+    <div class="eyebrow">Diashow · NL MJ · SKB 2005&ndash;2007</div>
+    <h2>Die Skizzenbücher</h2>
+    <p class="lead" style="margin-bottom:18px">Spiralblöcke quer, etwa A4: auf der einen Seite die Zeichnung, auf der anderen die Schrift. Porträts, Figurenstudien, Materialnotizen &ndash; und dazwischen Rio, Kyoto, Agenda&nbsp;21. Neunzehn Blätter aus den Büchern, dem Depot und vom Familiengrab.</p>
+    <a class="mj-link" href="https://bildstock.berlintapete.de/Culture-Heritage-MemoryLab/Jaegerworks/Matthias-Jaeger" target="_blank" rel="noopener">Matthias Jaeger im Bildarchiv ↗</a>
+    <div class="show" id="sbShow" role="region" aria-roledescription="Diashow" aria-label="Skizzenbücher von Matthias Jaeger">
+      <div class="show-stage" id="sbStage" aria-live="polite">
+        <button class="show-nav prev" id="sbPrev" aria-label="Vorheriges Blatt">&lsaquo;</button>
+        <button class="show-nav next" id="sbNext" aria-label="Nächstes Blatt">&rsaquo;</button>
+      </div>
+      <div class="show-prog"><i id="sbProg"></i></div>
+      <div class="show-bar">
+        <span class="num" id="sbNum">01 / 19</span>
+        <span class="cap" id="sbCap"></span>
+        <button id="sbPlay" aria-pressed="true">Pause</button>
+        <button id="sbFs">Vollbild</button>
+      </div>
+      <div class="show-thumbs" id="sbThumbs" aria-label="Blattauswahl"></div>
+    </div>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card glass"><h3 id="sbKap">&nbsp;</h3><p id="sbDesc"></p></div>
+      <div class="card glass"><h3>Wahrnehmen und Darstellen</h3><p>Die Überschrift steht wörtlich in einem der Bücher &ndash; sie beschreibt, was diese Bände sind: Zeichenheft, Notizblock und Kalender in einem Band. Titel sind Arbeitstitel; Lesungen der Handschrift und Datierungen sind vorläufig und bis zur archivischen Erschließung nicht belegt.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="site-foot-in">
+    <span>Jaeger Stiftung · Morgenlandstraße 35 · 17033 Neubrandenburg</span>
+    <span>Arbeitsstand 18.09.2026 · Werkfotos: <a href="https://bildstock.berlintapete.de/Culture-Heritage-MemoryLab/Jaegerworks/Matthias-Jaeger" target="_blank" rel="noopener">Werkarchiv Matthias Jaeger</a></span>
+    <span class="site-foot-links"><a href="impressum.html">Impressum</a> <a href="datenschutz.html">Datenschutz</a> <a href="mailto:aramradomski@me.com">Kontakt</a></span>
+    <span>© Jaeger Stiftung</span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/galerie.js"></script>
+<script src="assets/diashow.js"></script>
+</body>
+</html>
